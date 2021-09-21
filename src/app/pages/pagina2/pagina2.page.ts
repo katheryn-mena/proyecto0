@@ -10,6 +10,10 @@ export class Pagina2Page implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.listar();
   }
 
+  listar() {
+    var datos = localStorage.getItem('datos');
+  }
 }
