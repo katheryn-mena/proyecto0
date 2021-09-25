@@ -5,5 +5,15 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item *ngFor="let usuario of lista_usuario">
+      <ion-label>
+        <h3>{{usuario.rut}}</h3>
+        <h4>{{usuario.nombre}}</h4>
+        <h5>{{usuario.edad}}</h5>
+      </ion-label>
+      <ion-icon name="create-outline" (click)="actualizar()"></ion-icon>
+      <ion-icon name="trash-outline" (click)="eliminar()"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>

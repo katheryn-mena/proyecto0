@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pagina1',
@@ -18,22 +18,25 @@ export class Pagina1Page implements OnInit {
   v_edad = new FormControl('');
 
   usuario = new FormGroup({
-    v_rut : new FormControl(''),
-    v_nombre : new FormControl(''),
-    v_edad : new FormControl('')
+    v_rut : new FormControl('', Validators.required),
+    v_nombre : new FormControl('',[Validators.required, Validators.minLength(3)]),
+    v_edad : new FormControl('', [Validators.required, Validators.min(0), Validators.max(130)])
   });
 
   lista_usuario = new Array();
   user: any;
   grabar() {
-    console.log('Comienzo el proceso');
     this.user = {
       rut : this.usuario.controls.v_rut.value,
       nombre : this.usuario.controls.v_nombre.value,
       edad : this.usuario.controls.v_edad.value
     };
-    console.log(this.user);
     this.lista_usuario.push(this.user);
     localStorage.setItem('datos', JSON.stringify(this.lista_usuario));
+    alert('Usuario almacenado')
+
+    this.usuario.controls.v_rut.setValue('');
+    this.usuario.controls.v_nombre.setValue('');
+    this.usuario.controls.v_edad.setValue('');
   }
 }

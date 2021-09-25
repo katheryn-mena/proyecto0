@@ -12,21 +12,23 @@
         <ion-label position="floating">Rut</ion-label>
         <ion-input formControlName="v_rut"></ion-input>
       </ion-item>
+      <ion-label color="danger" *ngIf="usuario.controls.v_rut.errors?.required && (usuario.touched || usuario.dirty)">*El rut es obligatorio</ion-label>
 
       <ion-item>
         <ion-label position="floating">Nombre</ion-label>
         <ion-input formControlName="v_nombre"></ion-input>
       </ion-item>
+      <ion-label color="danger" *ngIf="usuario.controls.v_nombre.errors?.required && (usuario.touched || usuario.dirty)">*El nombre es obligatorio</ion-label>
+      <ion-label color="danger" *ngIf="usuario.controls.v_nombre.errors?.minlength && (usuario.touched || usuario.dirty)">*El nombre debe tener al menos 3 dígitos</ion-label>
 
       <ion-item>
         <ion-label position="floating">Edad</ion-label>
         <ion-input formControlName="v_edad"></ion-input>
       </ion-item>
+      <ion-label color="danger" *ngIf="usuario.controls.v_edad.errors?.required && (usuario.touched || usuario.dirty)">*La edad es obligatoria</ion-label>
 
-      <ion-button color="primary" expand="full" type="submit">Guardar</ion-button>
-      <ion-button color="warning" expand="full">Listar</ion-button>
-      <ion-button color="danger" expand="full">Eliminar</ion-button>
-      <ion-button color="light" expand="full">Limpiar</ion-button>
+      <ion-button color="primary" expand="block" type="submit" [disabled]="!usuario.valid">Grabar</ion-button>
+      <ion-button color="warning" expand="full" routerLink="/pagina2">Listar</ion-button>
   </form>
   </div>
 </ion-content>
