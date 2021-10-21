@@ -13,10 +13,6 @@ export class Pagina1Page implements OnInit {
   ngOnInit() {
   }
 
-  v_rut = new FormControl('');
-  v_nombre = new FormControl('');
-  v_edad = new FormControl('');
-
   usuario = new FormGroup({
     v_rut : new FormControl('', Validators.required),
     v_nombre : new FormControl('',[Validators.required, Validators.minLength(3)]),

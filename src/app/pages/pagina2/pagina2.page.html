@@ -12,8 +12,9 @@
         <h4>{{usuario.nombre}}</h4>
         <h5>{{usuario.edad}}</h5>
       </ion-label>
-      <ion-icon name="create-outline" (click)="actualizar()"></ion-icon>
-      <ion-icon name="trash-outline" (click)="eliminar()"></ion-icon>
+      <ion-icon name="create-outline" (click)="actualizar(usuario.rut)"></ion-icon>
+      <ion-icon name="trash-outline" (click)="eliminar(usuario.rut)"></ion-icon>
     </ion-item>
+    <ion-button expand="block" color="primary" routerLink="/home">Volver</ion-button>
   </ion-list>
 </ion-content>

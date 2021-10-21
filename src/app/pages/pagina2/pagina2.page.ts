@@ -51,20 +51,20 @@ export class Pagina2Page implements OnInit {
     datos = datos.replace(']','');
     datos = datos.split('},{').join('};{');
     var arreglo_temp = datos.split(';');
-    var usua;
+    var user;
     var lista_temp = new Array();
 
     for(let index = 0; index <arreglo_temp.length; index++) {
       var registro = arreglo_temp[index];
       var usuarios = JSON.parse(registro);
-      usua= {
+      user= {
         rut: usuarios.rut,
         nombre: usuarios.nombre,
         edad: usuarios.edad
       };
-      lista_temp.push(usua);
+      lista_temp.push(user);
     }
-    this.lista_usuario = lista_temp
+    this.lista_usuario = lista_temp;
   }
 
 
