@@ -5,5 +5,26 @@
 </ion-header>
 
 <ion-content>
+  <div class="formulario">
+    <h1>FORMULARIO REGISTRO</h1>
+    <form [formGroup]="usuario" (ngSubmit)="actualizar()">
+      <ion-item>
+        <ion-label position="floating">Rut</ion-label>
+        <ion-input formControlName="v_rut" disabled="disabled"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="v_nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Edad</ion-label>
+        <ion-input formControlName="v_edad"></ion-input>
+      </ion-item>
+      
+      <ion-button color="primary" expand="block" type="submit">Actualizar</ion-button>
+      <ion-button color="warning" expand="full" routerLink="/pagina2">Listar</ion-button>
+  </form>
+  </div>
 </ion-content>

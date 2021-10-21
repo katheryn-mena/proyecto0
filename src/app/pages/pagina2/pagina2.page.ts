@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EADDRINUSE } from 'constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagina2',
@@ -8,7 +8,7 @@ import { EADDRINUSE } from 'constants';
 })
 export class Pagina2Page implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.listar();
@@ -38,12 +38,35 @@ export class Pagina2Page implements OnInit {
   }];
 
   actualizar(rut:String) {
-    alert('Ha dado click en actualizar' + rut);
+    this.router.navigate(['/pagina3',rut])
   }
 
   eliminar(rut:String) {
-    alert('Ha dado click en eliminar' + rut);
-  }
+    var datos = localStorage.getItem('datos');
+    datos = datos.replace('[','');
+    datos = datos.replace(']','');
+    datos = datos.split('},{').join('};{');
+    var arreglo_temp = datos.split(';');
+    var user;
+    var lista_temp = new Array();
+
+    for(let index = 0; index <arreglo_temp.length; index++) {
+      var registro = arreglo_temp[index];
+      var usuarios = JSON.parse(registro);
+      user= {
+        rut: usuarios.rut,
+        nombre: usuarios.nombre,
+        edad: usuarios.edad
+      };
+      if (usuarios.rut != rut) {
+        lista_temp.push(user);
+      }
+    }
+    this.lista_usuario = lista_temp;
+    localStorage.setItem('datos', JSON.stringify(this.lista_usuario));
+    alert('Persona eliminada: ' +rut);
+  }    
+    
 
   listar() {
     var datos = localStorage.getItem('datos');

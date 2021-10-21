@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +13,8 @@ import { Pagina3Page } from './pagina3.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    Pagina3PageRoutingModule
+    Pagina3PageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [Pagina3Page]
 })
